@@ -1,0 +1,33 @@
+{
+  "name": "postcss-font-base64",
+  "version": "1.0.0",
+  "description": "this postcss plugin will export a font face defined by base64 encoded string",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src -d build",
+    "dev": "watch 'npm run build' src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckarlbe/postcss-font-base64.git"
+  },
+  "keywords": [
+    "base64",
+    "postcss",
+    "plugin",
+    "font"
+  ],
+  "author": "K.Berg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ckarlbe/postcss-font-base64/issues"
+  },
+  "homepage": "https://github.com/ckarlbe/postcss-font-base64#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "cli": "^1.0.1"
+  }
+}
