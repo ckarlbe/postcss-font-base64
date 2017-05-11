@@ -5,8 +5,9 @@
   "main": "build/index.js",
   "scripts": {
     "build": "babel src -d build",
-    "dev": "watch 'npm run build' src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:watch": "watch 'yarn run build' src",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
-    "cli": "^1.0.1"
+    "cli": "^1.0.1",
+    "watch": "^1.0.2",
+    "jest": "^20.0.1"
   }
 }

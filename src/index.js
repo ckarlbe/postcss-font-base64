@@ -1,1 +1,1 @@
-export default () => 'Hello Kibutz Ost'
+export default () => 'hello universe';
