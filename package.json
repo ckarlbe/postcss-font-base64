@@ -7,7 +7,10 @@
     "build": "babel src -d build",
     "build:watch": "watch 'yarn run build' src",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "example": "postcss example/before.css --output example/after.css",
+    "example:watch": "postcss ./example/before.css --output ./example/after.css --watch",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -30,7 +33,25 @@
     "babel-cli": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
     "cli": "^1.0.1",
-    "watch": "^1.0.2",
-    "jest": "^20.0.1"
+    "jest": "^20.0.1",
+    "watch": "^1.0.2"
+  },
+  "dependencies": {
+    "css-loader": "^0.28.1",
+    "cssnano": "^3.10.0",
+    "cssstats": "^3.0.0",
+    "file-loader": "^0.11.1",
+    "node-sass": "^4.5.2",
+    "postcss-cli": "^4.0.0",
+    "postcss-cssnext": "^2.10.0",
+    "postcss-custom-media": "^5.0.1",
+    "postcss-import": "^9.1.0",
+    "postcss-loader": "^2.0.5",
+    "postcss-reporter": "^3.0.0",
+    "postcss-scss": "^1.0.0",
+    "postcss-stats-reporter": "^0.2.0",
+    "precss": "^1.4.0",
+    "style-loader": "^0.17.0",
+    "sugarss": "^1.0.0"
   }
 }

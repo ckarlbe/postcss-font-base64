@@ -1,9 +1,16 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var postcss = require('postcss');
 
-exports.default = function () {
-  return 'hello universe';
-};
+module.exports = postcss.plugin('postcss-font-base64', function (options) {
+  // handle options here
+  options = options || {};
+
+  return function (css, result) {
+
+    // Runs through all of the nodes (declorations) in the file
+    css.walkDecls(function (declaration) {
+      declaration.value = declaration.value.split('').reverse().join('');
+    });
+  };
+});
