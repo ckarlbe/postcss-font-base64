@@ -42,6 +42,7 @@
     "cssstats": "^3.0.0",
     "file-loader": "^0.11.1",
     "node-sass": "^4.5.2",
+    "path": "^0.12.7",
     "postcss-cli": "^4.0.0",
     "postcss-cssnext": "^2.10.0",
     "postcss-custom-media": "^5.0.1",
@@ -51,7 +52,6 @@
     "postcss-scss": "^1.0.0",
     "postcss-stats-reporter": "^0.2.0",
     "precss": "^1.4.0",
-    "style-loader": "^0.17.0",
-    "sugarss": "^1.0.0"
+    "style-loader": "^0.17.0"
   }
 }

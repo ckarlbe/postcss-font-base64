@@ -1,5 +1,7 @@
-import someshit from '../src/index.js';
-
 test('this should pass', () => (
-    expect(someshit()).toBe('hello universe')
+    expect(false).toBe(false)
   ));
+
+test('something else', () => (
+  expect('this should fail').toBe('succesfull')
+));

@@ -11,7 +11,9 @@ module.exports = {
         warnForDuplicates: false
       }),
       require('postcss-custom-media'),
-      require('./build/index.js'), // <-- this plugin!
+      require('./build/index.js')({
+        //fontPath: '/System Folder/Fonts'
+      }),
       /*
       require('cssnano')({
         safe: true
