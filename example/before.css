@@ -27,6 +27,7 @@ strong {
 .heading {
     font-family: var(--font-stack-pebble);
     font-weight: bold;
+    made-up-property: url("value of something");
     text-transform: uppercase;
 }
 
