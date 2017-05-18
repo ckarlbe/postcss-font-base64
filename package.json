@@ -10,7 +10,9 @@
     "test:watch": "npm test -- --watch",
     "example": "postcss example/before.css --output example/after.css",
     "example:watch": "postcss ./example/before.css --output ./example/after.css --watch",
-    "prepublish": "npm run build"
+    "prepublish": "npm run test",
+    "publish": "npm run build",
+    "postpublish": "npm run example"
   },
   "repository": {
     "type": "git",
