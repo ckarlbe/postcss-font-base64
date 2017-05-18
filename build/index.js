@@ -40,28 +40,6 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
 
           return newUrlStr;
         });
-        /*
-        for(var i=0; i<fontValues.length; i++){
-            console.log(fontValues[i]);
-        }
-        */
-        /*
-        //var res64 = base64Encode(options.fontPath + '/fonts/' + 'fakefont.eot');
-        //rule.append({prop: 'base64', value: res64});
-           //rule.remove()
-        // object to store base64 encodings
-        //var myMap = {}
-        if (rule.prop === 'src'){
-          rule.value = 'url(data:application/font-woff)'
-        }
-         // locate font-family declaration
-        //if (decl.prop==='font-family') {
-         //TODO: Change this to a smarter map
-        //var fonts = getFontList();
-         //var res64 = base64Encode(options.fontPath + '/' + 'fakefont.eot');
-        //myMap[decl.value] = { 'base64': res64 };
-        //decl.value = res64;
-        */
       });
     });
     // helper functions

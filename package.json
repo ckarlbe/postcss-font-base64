@@ -1,6 +1,6 @@
 {
   "name": "postcss-font-base64",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "this postcss plugin will export a font face defined by base64 encoded string",
   "main": "build/index.js",
   "scripts": {
