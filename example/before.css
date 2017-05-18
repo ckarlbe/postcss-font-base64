@@ -1,53 +1,9 @@
-:root {
-
-    /* Spacing/Gutters */
-    --spacing: 1.2rem;
-    --spacing-double: 2.4rem;
-
-    /* Font stacks */
-    --font-stack-pebble: "Scrabble";
-    --font-stack-helvetica: "Helvetica Neue", helvetica, arial, sans-serif;
-}
-
 @font-face {
-    font-family: var(--font-stack-pebble);
+    font-family: Scrabble;
     src:
         url("fonts/fakefont.eot?#iefix") format("embedded-opentype"),
         url("fonts/fakefont.woff") format("woff"),
         url("fonts/fakefont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
-}
-
-b,
-strong {
-    font-weight: bold;
-}
-
-.heading {
-    font-family: var(--font-stack-pebble);
-    font-weight: bold;
-    made-up-property: url("value of something");
-    text-transform: uppercase;
-}
-
-
-.heading--mega {
-    font-size: 6.7rem;
-    line-height: 1.074626866;
-    margin: calc(var(--spacing-double) * 2) 0;
-}
-
-
-.heading--l {
-    font-size: 5rem;
-    line-height: 1.08;
-    margin: calc(var(--spacing-double) * 2) 0;
-}
-
-.small {
-    font-family: var(--font-stack-helvetica);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    margin: var(--spacing-double) 0;
 }

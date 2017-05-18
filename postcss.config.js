@@ -1,5 +1,6 @@
 module.exports = {
     plugins: [
+      /*
       require('postcss-import'),
       require('postcss-cssnext')({
         features: {
@@ -11,14 +12,16 @@ module.exports = {
         warnForDuplicates: false
       }),
       require('postcss-custom-media'),
+      */
       require('./build/index.js')({
-        //fontPath: '/System Folder/Fonts'
+        //future options
       }),
       /*
       require('cssnano')({
         safe: true
       }),
-      */
+
       require('postcss-reporter')
+      */
     ]
 }
