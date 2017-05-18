@@ -36,14 +36,13 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
           console.log(fontSource);
           var res64 = base64Encode(fontSource);
 
-          var newUrlStr = 'url(data:application/'.concat(getFormat(attr)).concat(';charset=utf-8;base64').concat(res64);
+          var newUrlStr = 'url(data:application/'.concat(getFormat(attr)).concat(';charset=utf-8;base64').concat(res64).concat(')');
 
           return newUrlStr;
         });
       });
     });
     // helper functions
-
     function getFormat(attribute) {
 
       var formats = {

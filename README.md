@@ -1,6 +1,14 @@
 # Description
 This postcss module takes your local custom font and encode it to a base64 string which is included in your css. The supported formats are currently woff, woff2, ttf, and eot. This module is subject to change. Contribution appreciated!
 
+# Install
+```shell
+npm install --save-dev postcss-font-base64
+```
+or
+```shell
+yarn add postcss-font-base64 --dev
+```
 # Example
 ## Input
 ```css
