@@ -3,7 +3,8 @@ This postcss module takes your local custom font and encode it to a base64 strin
 
 # Example
 ## Input
-´´´css
+
+```css
 @font-face {
     font-family: Scrabble;
     src:
@@ -13,26 +14,31 @@ This postcss module takes your local custom font and encode it to a base64 strin
     font-weight: normal;
     font-style: normal;
 }
-´´´
+
+```
 ## Output
-´´´css
+
+
+```css
 @font-face {
     font-family: "Scrabble";
     src:
-      url(data:application/font-eot;charset=utf-8;base64sZEAABWRAAACAAIABAAAAAIPBwMCA...pc0RTbjSyE+/XjpRgPM1g5rbWwJy1hgQ0rxIVh5Pg1r2DWkvG+KvL95Cmy471YvSjh2sbESIUUsesdIrznF3l54u0ZwZITPeE format("embedded-opentype"),
+      url(data:application/font-eot;charset=utf-8;base64sZEAABWRAAA...l54u0 format("embedded-opentype"),
 
-      url(data:application/font-woff;charset=utf-8;base64d09GRgABAAAAAKTcABEAAAABRswA...AACQHFwQ2aG10eAAAAlAAAAPpAAAHhNlUK9Zsb2NhAAARHAAAA8QAAAPEJgVXKG1heHAAAAHcAAAAIAAAACAE0wfMbmFtZQAA format("woff"),
+      url(data:application/font-woff;charset=utf-8;base64d09GRgABAA...tZQAA format("woff"),
 
-      url(data:application/font-tiff;charset=utf-8;base64AAEAAAARAQAABAAQR0RFRhtmHS0A...fgAAAeEbG9jYSYFVygAABzYAAADxG1heHAE0wfMAAABeAAAACBuYW1lOotkigAA3VAAAAKacG9zdP+BAG8AAN/sAAAAIHByZXCF7x/xAAAVOAAAA2oAAQAAAAEZma7l/dhfDzz1AAkD6AAAAADSTkhUAAAAANJOeqj/Pf7ZA+8D0QAA format("truetype");
+      url(data:application/font-tiff;charset=utf-8;base64AAEAAAARAQ...D0QAA format("truetype");
 
     font-weight: normal;
     font-style: normal;
 }
-´´´
+
+```
 
 # Config
 In your postcss.config.js add this module:
-´´´javascript
+
+```javascript
 module.exports = {
     plugins: [
       ...
@@ -42,7 +48,8 @@ module.exports = {
     ]
 }
 
-´´´
+
+```
 # Options
 There are currently no options available. Please suggest!
 
