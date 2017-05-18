@@ -3,7 +3,6 @@ This postcss module takes your local custom font and encode it to a base64 strin
 
 # Example
 ## Input
-
 ```css
 @font-face {
     font-family: Scrabble;
@@ -17,8 +16,6 @@ This postcss module takes your local custom font and encode it to a base64 strin
 
 ```
 ## Output
-
-
 ```css
 @font-face {
     font-family: "Scrabble";
@@ -32,9 +29,7 @@ This postcss module takes your local custom font and encode it to a base64 strin
     font-weight: normal;
     font-style: normal;
 }
-
 ```
-
 # Config
 In your postcss.config.js add this module:
 
@@ -47,8 +42,6 @@ module.exports = {
       })
     ]
 }
-
-
 ```
 # Options
 There are currently no options available. Please suggest!
