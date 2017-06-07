@@ -1,61 +1,60 @@
-var postcss = require('postcss');
-var path = require('path');
-var fs = require('fs')
+'use strict';
+
+const postcss = require('postcss');
+const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
 
 module.exports = postcss.plugin('postcss-font-base64', function (options) {
   // handle options here
   options = options || {};
+
   // default options
-  options.match = options.match || {'Scrabble': ['fakefont']}
+  options.match = options.match || { 'Scrabble': ['fakefont'] };
   options.format = options.format || ['eot', 'woff', 'woff2', 'ttf'];
-  // variables
-  var CWD = path.resolve(process.cwd());
-  return function(css, result) {
+
+  // constiables
+  const CWD = path.resolve(process.cwd());
+
+  return (css, result) => {
     // Runs through all of the nodes (declarations) in the css
-    var fontFaces = [];
-    css.walkAtRules('font-face', function (fontFace) {
+    css.walkAtRules('font-face', (fontFace) => {
+      const fileTypeRegex = getRegexStringForFileTypes(options.format);
 
-      fontFace.each( function(kids) {
-        var fontValues = []
-        if (kids.prop === 'src') {
-            var properties = kids.value.split(',')
-            //console.log(properties)
-            for(var i=0; i<properties.length; i++){
-              //console.log(properties[i].split(','))
-            }
-            //console.log(fontValues);
-            //kids.replaceValues(/\w/, 'ost')
-            //console.log('value');
-        }
-        //console.log(fontValues);
-        fontFace.replaceValues(/url\([a-z\.\/\? \# \' \"\-]+\)/, function(attr) {
+      // TODO: Return here if font-family doesn't match options.match
 
-          var fontSource=attr.match(/[a-z\.\/\? \# \' \" \-]+(?=[\)])/)[0].replace(/\"+/g,'').replace('?#iefix', '');
-          console.log(fontSource);
-          var res64 = base64Encode(fontSource);
+      fontFace.replaceValues(new RegExp('url\\("?.+\\.' + fileTypeRegex + '"?\\)'), (attr) => {
+        const fontSource = attr.replace(/(url|"|\(|\)|\?#iefix)/g, '');
 
-          var newUrlStr ='url(data:application/'
-          .concat(getFormat(attr))
-          .concat(';charset=utf-8;base64')
-          .concat(res64);
+        // TODO: Return here if font filename doesn't match options.match
 
-          return newUrlStr;
-        })
+        const res64 = base64Encode(fontSource);
+        const newUrlStr = 'url(data:'.concat(getMimeType(attr)).concat(';charset=utf-8;base64,').concat(res64).concat(')');
+
+        return (res64 ? newUrlStr : attr);
+      });
+    });
+
+    function getRegexStringForFileTypes(fileTypes) {
+      const regex = fileTypes.map(function(fileType) {
+        return ((fileType === 'eot') ? fileType.concat('(\\?#iefix)?') : fileType);
       })
-    })
+      .join('|');
+      return ((regex) ? '(' + regex + ')' : '');
+    }
+
     // helper functions
-
-    function getFormat(attribute) {
-
-      var formats = {
-        '.woff': 'font-woff',
-        '.woff2': 'font-woff2',
-        '.ttf': 'font-tiff',
-        '.eot': 'font-eot'
+    function getMimeType(attribute) {
+      const formats = {
+        '.woff': 'application/font-woff',
+        '.woff2': 'font/woff2',
+        '.ttf': 'application/font-sfnt',
+        '.eot': 'application/vnd.ms-fontobject',
+        '.otf': 'application/font-sfnt'
       };
 
-      var match = '';
-      var extension = attribute.match(/\.[a-z]{3,4}/)[0];
+      let match = '';
+      const extension = attribute.match(/\.[a-z]{3,4}/)[0];
 
       if (extension in formats) {
         match = formats[extension];
@@ -63,14 +62,26 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
       return match;
     };
 
-    function getFontList(fontPath) {
-        var listOfFonts = fs.readdirSync(fontPath);
-        return listOfFonts;
+    function base64Encode(file) {
+      if (fs.existsSync(file)) {
+        return readAndEncodeFile(file);
+      } else {
+        // Fallback to glob
+        file = glob.sync('**/' + file)[0]; // Could be smarter
+
+        if (fs.existsSync(file)) {
+          return readAndEncodeFile(file);
+        }
+
+        console.warn(file, 'does not exist.');
+        return '';
+      }
     }
 
-    function base64Encode(file) {
-      var bitmap = fs.readFileSync(file);
+    function readAndEncodeFile(file) {
+      const bitmap = fs.readFileSync(file);
       return new Buffer(bitmap).toString('base64');
     }
-  }
-})
+
+  };
+});

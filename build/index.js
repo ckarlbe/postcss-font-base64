@@ -13,7 +13,7 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
   options.match = options.match || { 'Scrabble': ['fakefont'] };
   options.format = options.format || ['eot', 'woff', 'woff2', 'ttf'];
 
-  // variables
+  // constiables
   var CWD = path.resolve(process.cwd());
 
   return function (css, result) {
@@ -31,16 +31,15 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
         var res64 = base64Encode(fontSource);
         var newUrlStr = 'url(data:'.concat(getMimeType(attr)).concat(';charset=utf-8;base64,').concat(res64).concat(')');
 
-        return (res64 ? newUrlStr : attr);
+        return res64 ? newUrlStr : attr;
       });
     });
 
     function getRegexStringForFileTypes(fileTypes) {
-      var regex = fileTypes.map(function(fileType) {
-        return ((fileType === 'eot') ? fileType.concat('(\\?#iefix)?') : fileType);
-      })
-      .join('|');
-      return ((regex) ? '(' + regex + ')' : '');
+      var regex = fileTypes.map(function (fileType) {
+        return fileType === 'eot' ? fileType.concat('(\\?#iefix)?') : fileType;
+      }).join('|');
+      return regex ? '(' + regex + ')' : '';
     }
 
     // helper functions
@@ -73,7 +72,7 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
           return readAndEncodeFile(file);
         }
 
-        console.warn(file, 'dose not exist.');
+        console.warn(file, 'does not exist.');
         return '';
       }
     }
@@ -82,6 +81,5 @@ module.exports = postcss.plugin('postcss-font-base64', function (options) {
       var bitmap = fs.readFileSync(file);
       return new Buffer(bitmap).toString('base64');
     }
-
   };
 });
